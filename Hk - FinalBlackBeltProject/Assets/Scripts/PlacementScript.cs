@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
@@ -47,7 +47,7 @@ public class PlacementScript : MonoBehaviour
         SellAmount = 50;
         sellingTower = false;
         SellPriceText.text = SellAmount.ToString();
-
+	NumberOfTowers = 0;
 
         TowerPlaced = false;
         ButtonClicked = true; 
@@ -110,7 +110,7 @@ public class PlacementScript : MonoBehaviour
     public void ButtonPressed()
     {
         TowerPlaced = true;
-        if (TowerPlaced && MoneyAmount >= 100 && ButtonClicked && NumberOfTowers <= 15)
+        if (TowerPlaced && MoneyAmount >= 100 && ButtonClicked && NumberOfTowers <= 11)
         {
             TowerSelectedForPlacement = Tower1;
             MoneyAmount -= 100;
@@ -134,6 +134,7 @@ public class PlacementScript : MonoBehaviour
             MoneyAmount += SellAmount;
             MoneyText.text = MoneyAmount.ToString();
             sellingTower = false;
+	    NumberOfTowers -= 1; 
             Debug.Log("Button Is Clicked");
             CancelButton.SetActive(false);
         }
